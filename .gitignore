@@ -1,0 +1,20 @@
+#specific files#
+.DS_Store
+
+#class files #
+*.class
+WebRoot/WEB-INF/classes/**
+app/webapp/WEB-INF/classes/**
+.settings/**
+work/**
+
+
+
+# Package Files #
+#*.jar
+*.war
+*.ear
+
+#other Files#
+.rar
+.tomcatplugin
