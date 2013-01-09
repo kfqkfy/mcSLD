@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.mc.pojo">
+	<class
+		name="BAppInstance"
+		table="b_app_instance"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="id"
+		>
+			<generator class="sequence">
+				<param name="sequence" >b_app_instance_id_seq</param>
+			</generator>
+		</id>
+
+		<property
+			name="Name"
+			column="name"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="Description"
+			column="description"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="MonitorStatus"
+			column="monitor_status"
+			type="string"
+			not-null="false"
+			length="2"
+		/>
+		<property
+			name="Ip"
+			column="ip"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="Version"
+			column="version"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="Port"
+			column="port"
+			type="string"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="CreatedBy"
+			column="created_by"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="CreatedOn"
+			column="created_on"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="LastChangedBy"
+			column="last_changed_by"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="LastChangedOn"
+			column="last_changed_on"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<many-to-one
+			name="Sc"
+			column="sc_id"
+			class="BAppCluster"
+			not-null="true"
+		>
+		</many-to-one>
+
+
+	</class>	
+</hibernate-mapping>
