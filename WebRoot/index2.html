@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="script/jquery-1.8.1/jquery-1.8.1.js" ></script>
+<link rel="stylesheet" type="text/css" href="statics/css/ext/ext-all.css" />
+<script type="text/javascript" src="statics/js/ext/ext-all.js"></script>
+
+<script type="text/javascript">
+
+Ext.require(['Ext.tree.*', 'Ext.data.*', 'Ext.tip.*']);
+Ext.onReady(function() {
+ Ext.QuickTips.init();
+ alert(1);
+ var textArea = new Ext.form.TextArea({
+  id: "phoneExt",
+  renderTo: "phoneDiv",
+  width: 320,
+  height: 120,
+  enableKeyEvents: true,
+  listeners: {
+   'change': function() {
+    calculatePhoneListNumber();
+   },
+   'keydown': function(cur, e) {
+    calculatePhoneListNumber();
+   },
+   'keyup': function() {
+    calculatePhoneListNumber();
+   }
+  }
+ });
+ 
+ function calculatePhoneListNumber () {
+  var phones = textArea.getValue();
+  var length = phones.split(/[,， ]/).length;   
+ }
+ function removeRepeatPhoneList() {
+    var phones = textArea.getValue();
+    var phoneArray = phones.split(/[,， ]/);
+    var string = null;
+    for (var idx = 0;idx < phoneArray.length;idx ++) {
+      if (idx == 0) {
+        string = phoneArray[idx];
+      } else if (string.indexOf(phoneArray[idx]) != -1) {
+        string += ',' + phoneArray[idx];
+      }
+    }
+    textArea.setValue(string);
+ }
+ function appendPhoneList(plist,flag) {
+   var phones = textArea.getValue();
+   if (flag) {
+     if (Ext.isEmpty(phones)) {
+       textArea.setValue(plist);
+     } else {
+       textArea.setValue(phones + ',' + plist);
+     }
+   } else if (!Ext.isEmpty(phones)) {
+     var pt1 = new RegExp('[,， ]?' + plist);
+     phones = phones.replace(pt1,'');
+     var pt2 = /[,， ]$/;
+     phones = phones.replace(pt2,'');
+      textArea.setValue(phones);
+   }
+ }
+ 
+
+ function fCountPhoneNumber() {
+  var phones = textArea.getValue();
+  var length = phones.split(/[,， ]/).length;
+ }
+ $("#insertFromOrganizationContactList").click(function() {
+  var store = Ext.create('Ext.data.TreeStore', {
+   proxy: {
+    type: 'ajax',
+    url: 'Spring/Ajax/Session/queryOrganizationContactAnsyNodeList'
+   },
+            fields: [ 
+              {name: 'organizationName',type: 'string'}, {name: 'organizationId', type: 'int'},
+              {name: 'text', type: 'string'},{name: 'phoneList', type: 'string'} 
+            ],  
+   
+   nodeParam: 'pNodeId',
+   root: {
+    text: '根节点',
+    id: 'organization_1',
+    expanded: true
+   },
+   folderSort: true,
+   remoteSort: true,
+   storeId: 'storeId',
+   sorters: [{
+    property: 'text',
+    direction: 'ASC'
+   }]
+  });
+  var tree = Ext.create('Ext.tree.Panel', {
+   store: store,
+   rootVisible: false,
+   //renderTo: 'tree-div',
+   //height: 300,
+   width: 120,
+   useArrows: true,
+   
+   listeners: {
+    checkchange: function(node, flag) {
+        if (node.isLeaf() && !Ext.isEmpty(node.data.phoneList)) {
+          appendPhoneList(node.data.phoneList,flag);
+        } else if (flag && !node.isExpanded() && !node.isLeaf()) {
+      node.expand(true,
+      function() {
+       node.cascadeBy(function(child) {
+        child.set("checked", flag);
+                    if (child.isLeaf() && !Ext.isEmpty(child.data.phoneList)) {
+                      appendPhoneList(child.data.phoneList,flag);
+                    }         
+        //child.fireEvent('checkchange', child, flag);
+       });
+      });
+     } else {
+      node.cascadeBy(function(child) {
+       child.set("checked", flag);
+                if (child.isLeaf() && !Ext.isEmpty(child.data.phoneList)) {
+                  appendPhoneList(child.data.phoneList,flag);
+                } 
+       //child.fireEvent('checkchange', child, flag);
+      });
+     }
+    }
+   }
+   
+
+  });
+
+
+        var popupMenu = Ext.create('Ext.menu.Menu', {
+            width: 320,
+            //height : 480,
+            plain: true,
+            frame : false,
+            frameHeader : false,
+            header : false,
+            id : 'popupMenu',
+            floating: true,  // usually you want this set to True (default)
+            //renderTo: Ext.getBody(),  // usually rendered by it's containing component
+            items: [tree]
+        });  
+
+        if (textArea.menu == null) {
+          textArea.menu = popupMenu;
+        }
+     
+     
+     textArea.menu.setWidth(320);
+     textArea.menu.showBy(textArea);
+        //textArea.menu.show(textArea.el,"tl-bl?");        
+  
+ });
+});
+
+ 
+
+
+</script>
+</head>
+
+
+<body>
+
+  <div id="phoneDiv"></div>
+  <a href="#" id="insertFromOrganizationContactList">从通讯录添加</a>
+  <div id="tree-div"></div>
+
+</body>
+</html>
