@@ -3,12 +3,12 @@ Ext.onReady(function() {
 	Ext.QuickTips.init();
 
 	var tree = new Ext.tree.Panel({
-		        region:'north',
+		        region:'west',
 		        title: '菜单',
 		        split: true,
 		        height: 500,
 		        minSize: 150,
-		        rootVisible: false,
+		        rootVisible: true,
 		        autoScroll: true,
 				root : {
 					nodeType : 'async',
@@ -67,13 +67,13 @@ Ext.onReady(function() {
 //    var layoutExamples = [];
 	
 	var layoutExamples = [];
-//    Ext.Object.each(getBasicLayouts(), function(name, example) {
-//        layoutExamples.push(example);
-//    });
+    Ext.Object.each(getBasicLayouts(), function(name, example) {
+        layoutExamples.push(example);
+    });
     
-//    Ext.Object.each(getCustomLayouts(), function(name, example){
-//        layoutExamples.push(example);
-//    });
+    Ext.Object.each(getCustomLayouts(), function(name, example){
+        layoutExamples.push(example);
+    });
     
     var contentPanel = {
             id: 'content-panel',
@@ -82,51 +82,52 @@ Ext.onReady(function() {
             margins: '2 5 5 0',
             activeItem: 0,
             border: false,
-            items:[{
-                id: 'ai-panel',
-                title: 'Absolute Layout',
-                layout: 'absolute',
-                defaults: {
-                    bodyStyle: 'padding:15px;',
-                    width: 200,
-                    height: 100,
-                    frame: true
-                },
-                items:[{
-                    title: 'Panel 1',
-                    x: 150,
-                    y: 150,
-                    html: 'Positioned at x:50, y:50'
-                },{
-                    title: 'Panel 2',
-                    x: 225,
-                    y: 225,
-                    html: 'Positioned at x:125, y:125'
-                }]
-            },{
-                id: 'su-panel',
-                title: 'Absolute Layout',
-                layout: 'absolute',
-                defaults: {
-                    bodyStyle: 'padding:15px;',
-                    width: 200,
-                    height: 100,
-                    frame: true
-                },
-                items:[{
-                    title: 'Panel 1',
-                    x: 50,
-                    y: 50,
-                    html: 'Positioned at x:50, y:50'
-                },{
-                    title: 'Panel 2',
-                    x: 125,
-                    y: 125,
-                    html: 'Positioned at x:125, y:125'
-                }]
-            }]
+            items : layoutExamples
+//            items:[{
+//                id: 'ai-panel',
+//                title: 'Absolute Layout',
+//                layout: 'absolute',
+//                defaults: {
+//                    bodyStyle: 'padding:15px;',
+//                    width: 200,
+//                    height: 100,
+//                    frame: true
+//                },
+//                items:[{
+//                    title: 'Panel 1',
+//                    x: 150,
+//                    y: 150,
+//                    html: 'Positioned at x:50, y:50'
+//                },{
+//                    title: 'Panel 2',
+//                    x: 225,
+//                    y: 225,
+//                    html: 'Positioned at x:125, y:125'
+//                }]
+//            },{
+//                id: 'su-panel',
+//                title: 'Absolute Layout',
+//                layout: 'absolute',
+//                defaults: {
+//                    bodyStyle: 'padding:15px;',
+//                    width: 200,
+//                    height: 100,
+//                    frame: true
+//                },
+//                items:[{
+//                    title: 'Panel 1',
+//                    x: 50,
+//                    y: 50,
+//                    html: 'Positioned at x:50, y:50'
+//                },{
+//                    title: 'Panel 2',
+//                    x: 125,
+//                    y: 125,
+//                    html: 'Positioned at x:125, y:125'
+//                }]
+//            }]
        };
- 
+    
     // Finally, build the main layout once all the pieces are ready.  This is also a good
     // example of putting together a full-screen BorderLayout within a Viewport.
     Ext.create('Ext.Viewport', {
