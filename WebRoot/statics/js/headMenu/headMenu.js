@@ -28,7 +28,7 @@ Ext.onReady(function() {
 						text : 'Landscape Managment',
 						id : 'lm',
 						children : [{
-							text : 'Servuce Units',
+							text : 'Service Units',
 							id : 'su',
 							leaf : true
 						},{
@@ -76,8 +76,22 @@ Ext.onReady(function() {
     });
     
     Ext.Object.each(getTenant(), function(name, example){
+    	
+    	//alert(example);
         layoutExamples.push(example);
     });
+    
+    Ext.Object.each(getDataBase(), function(name, example){
+    	
+    	//alert(example);
+        layoutExamples.push(example);
+    });
+    Ext.Object.each(getApplication(), function(name, example){
+    	
+    //	alert(example);
+        layoutExamples.push(example);
+    });
+    
     
     var contentPanel = {
             id: 'content-panel',
