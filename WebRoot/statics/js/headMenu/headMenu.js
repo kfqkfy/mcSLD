@@ -75,6 +75,10 @@ Ext.onReady(function() {
         layoutExamples.push(example);
     });
     
+    Ext.Object.each(getTenant(), function(name, example){
+        layoutExamples.push(example);
+    });
+    
     var contentPanel = {
             id: 'content-panel',
             region: 'center', // this is what makes this panel into a region within the containing layout

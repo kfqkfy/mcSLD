@@ -31,13 +31,13 @@ function getBasicLayouts() {
          * ================  Start page config  =======================
          */
         // The default start page, also a simple example of a FitLayout.
-        start: {
-            id: 'start-panel',
-            title: 'Start Page',
-            layout: 'fit',
-            bodyStyle: 'padding:25px',
-            contentEl: 'start-div'  // pull existing content from the page
-        },
+//        start: {
+//            id: 'start-panel',
+//            title: 'Start Page',
+//            layout: 'fit',
+//            bodyStyle: 'padding:25px',
+//            contentEl: 'start-div'  // pull existing content from the page
+//        },
 
         /*
          * ================  AbsoluteLayout config  =======================
