@@ -10,7 +10,7 @@ import com.mc.pojo.BServiceUtil;
  * @author kongfeiquan
  *
  */
-public interface IBServiceUtilDao extends GenericDao<BServiceUtil> {
+public interface IBServiceUtilDao extends GenericDao<BServiceUtil,Long> {
 
 	public void updateServiceUtil(BServiceUtil serviceUtil);
 

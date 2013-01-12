@@ -1,4 +1,4 @@
-Ext.onReady(function() {
+/*Ext.onReady(function() {
 
 	Ext.QuickTips.init();
 
@@ -48,24 +48,12 @@ Ext.onReady(function() {
 	tree.getSelectionModel().on('select', function(selModel, record) {
         if (record.get('leaf')) {
             Ext.getCmp('content-panel').layout.setActiveItem(record.getId() + '-panel');
+            if(record.getId() == 'ten'){
+            	store.load();
+            }
         }
     });
 
-	//var src = imgUrl + "/image/login/homeCopy.png";
-	
-	
-    // This is the Details panel that contains the description for each example layout.
-//    var detailsPanel = {
-//        id: 'details-panel',
-//        title: 'Details',
-//        region: 'center',
-//        bodyStyle: 'padding-bottom:15px;background:#eee;',
-//        autoScroll: true,
-//        html: '<p class="details-info">When you select a layout from the tree, additional details will display here.</p>'
-//    };
-    
-//    var layoutExamples = [];
-	
 	var layoutExamples = [];
     Ext.Object.each(getBasicLayouts(), function(name, example) {
         layoutExamples.push(example);
@@ -87,53 +75,8 @@ Ext.onReady(function() {
             activeItem: 0,
             border: false,
             items : layoutExamples
-//            items:[{
-//                id: 'ai-panel',
-//                title: 'Absolute Layout',
-//                layout: 'absolute',
-//                defaults: {
-//                    bodyStyle: 'padding:15px;',
-//                    width: 200,
-//                    height: 100,
-//                    frame: true
-//                },
-//                items:[{
-//                    title: 'Panel 1',
-//                    x: 150,
-//                    y: 150,
-//                    html: 'Positioned at x:50, y:50'
-//                },{
-//                    title: 'Panel 2',
-//                    x: 225,
-//                    y: 225,
-//                    html: 'Positioned at x:125, y:125'
-//                }]
-//            },{
-//                id: 'su-panel',
-//                title: 'Absolute Layout',
-//                layout: 'absolute',
-//                defaults: {
-//                    bodyStyle: 'padding:15px;',
-//                    width: 200,
-//                    height: 100,
-//                    frame: true
-//                },
-//                items:[{
-//                    title: 'Panel 1',
-//                    x: 50,
-//                    y: 50,
-//                    html: 'Positioned at x:50, y:50'
-//                },{
-//                    title: 'Panel 2',
-//                    x: 125,
-//                    y: 125,
-//                    html: 'Positioned at x:125, y:125'
-//                }]
-//            }]
        };
     
-    // Finally, build the main layout once all the pieces are ready.  This is also a good
-    // example of putting together a full-screen BorderLayout within a Viewport.
     Ext.create('Ext.Viewport', {
         layout: 'border',
         title: 'Ext Layout Browser',
@@ -160,27 +103,398 @@ Ext.onReady(function() {
         renderTo: Ext.getBody()
     });
 	
+});*/
+/*
+var store;
+function getTenant() { 
 	
 	
-	
+	Ext.define('Tenant', {
+	    extend: 'Ext.data.Model',
+	    fields: [
+		{
+			name : 'id',
+			type : 'long'
+		},{
+	        name: 'cid',
+	        type : 'long'
+	    }, {
+	    	name: 'dbi_id',
+	        type : 'long'
+	    }, {
+	    	name: 'name',
+	    	type : 'String'
+	    }, {
+	    	name: 'description',
+	    	type : 'String'
+	    }, {
+	    	name: 'monitor_status',
+	    	type : 'String'
+	    }, {
+	    	name: 'Version',
+	    	type : 'String'
+	    }, {
+	    	name: 'lc_status',
+	    	type : 'String'
+	    }, {
+	    	name: 'usage',
+	    	type : 'String'
+	    }, {
+	    	name: 'connection_user_password',
+	    	type : 'String'
+	    }, {
+	    	name: 'created_by',
+	    	type : 'String'
+	    }, {
+	    	name: 'created_on',
+	        type : 'String'
+	    },{
+	    	name : 'last_changed_by', 
+	    	type : 'String'
+	     },{
+	    	name : 'last_changed_on', 
+	    	type : 'String'
+	    }]
+	});
+    
+    store = new Ext.data.Store({
+    	model: 'Tenant',
+        proxy: new Ext.data.HttpProxy({url:'http://127.0.0.1:8080/mcSLD/tenant/getTenant!getAllTenant'}),//调用的动作
+        reader:new Ext.data.JsonReader(
+        {
+         type : 'json',
+         root : 'root'   //action里面的list，
+        },
+        [{
+			name : 'id',
+			mapping:'id',
+			type : 'long'
+		},{
+	        name: 'cid',
+	        mapping:'cid',
+	        type : 'long'
+	    }, {
+	    	name: 'dbi_id',
+	    	mapping:'dbi_id',
+	        type : 'long'
+	    }, {
+	    	name: 'name',
+	    	mapping:'description',
+	    	type : 'String'
+	    }, {
+	    	name: 'description',
+	    	mapping:'idescriptiond',
+	    	type : 'String'
+	    }, {
+	    	name: 'monitor_status',
+	    	mapping:'monitor_status',
+	    	type : 'String'
+	    }, {
+	    	name: 'Version',
+	    	mapping:'Version',
+	    	type : 'String'
+	    }, {
+	    	name: 'lc_status',
+	    	mapping:'lc_status',
+	    	type : 'String'
+	    }, {
+	    	name: 'usage',
+	    	mapping:'usage',
+	    	type : 'String'
+	    }, {
+	    	name: 'connection_user_password',
+	    	mapping:'connection_user_password',
+	    	type : 'String'
+	    }, {
+	    	name: 'created_by',
+	    	mapping:'created_by',
+	    	type : 'String'
+	    }, {
+	    	name: 'created_on',
+	    	mapping:'created_on',
+	        type : 'String'
+	    },{
+	    	name : 'last_changed_by', 
+	    	mapping:'last_changed_by',
+	    	type : 'String'
+	     },{
+	    	name : 'last_changed_on', 
+	    	mapping:'last_changed_on',
+	    	type : 'String'
+	    }]
+        ),
+        autoLoad: true
+	});
+    //store.on('load',function(){alert(store.getCount());});
+    store.load();
+    alert(store.getCount());
+    var tengrid = Ext.create('Ext.grid.Panel', {
+        store: store,
+        id: 'ten-panel',
+        columns: [{
+            header: 'Name',
+            dataIndex: 'name',
+			width: 90,
+        }, {
+            header: 'Service Unit',
+            dataIndex: 'Service Unit',
+            width: 80,
+        }, {
+           // xtype: 'datecolumn',
+            header: 'Version',
+            dataIndex: 'Version',
+            width: 80,
+        }, {
+           // xtype: 'numbercolumn',
+            header: 'Storage',
+            dataIndex: 'Storage',
+           // format: '$0,0',
+            width: 90,
+        }, {
+           // xtype: 'checkcolumn',
+            header: 'Storage',
+            dataIndex: 'Storage',
+            width: 90,
+        },{
+		    text     : 'Active User', 
+            width    : 85, 
+            sortable : true, 
+            dataIndex: 'Active User'
+        },
+		{
+            
+            text     : 'Remaining Days', 
+            width    : 85, 
+            sortable : true, 
+            dataIndex: 'Remaining Days'
+        },
+		{
+            text     : 'Monitor Status', 
+            width    : 85, 
+            sortable : true, 
+            dataIndex: 'Monitor Status'
+        }],
+        renderTo: 'editor-grid',
+        width: 600,
+        height: 400,
+        title: 'Tenants',
+        frame: true,
+        tbar: [{
+            text: 'New',
+            iconCls: 'employee-add',
+        }, {
+            text: 'Upgrade',
+            iconCls: 'employee-edit',
+			handler: function() {
+                var sm = grid.getSelectionModel();
+                rowEditing.cancelEdit();
+                store.remove(sm.getSelection());
+                if (store.getCount() > 0) {
+                    sm.select(0);
+                }
+            },
+			disabled: true
+        }, {
+            itemId: 'removeEmployee',
+            text: 'Delete',
+            iconCls: 'employee-remove',
+            handler: function() {
+                var sm = grid.getSelectionModel();
+                rowEditing.cancelEdit();
+                store.remove(sm.getSelection());
+                if (store.getCount() > 0) {
+                    sm.select(0);
+                }
+            },
+            disabled: true
+        }],
+        listeners: {
+            'selectionchange': function(view, records) {
+                this.down('#removeEmployee').setDisabled(!records.length);
+            }
+        }
+    });
+    
+    return {
+    	
+        grid :  tengrid
+    };
+}*/
 
-//	var src =  "/login/loginAction!homeCenter.jspa";
-
-//	var viewport = new Ext.Viewport({
-//		layout : 'fit',
-//		items : [{
-//			region : "north",
-//			border : false,
-//			height : 89,
-//			html : '<iframe id="headFrame" name="headFrame" frameborder="no" width="100%" scrolling="no" height="100%" />'
-//		}, tree, {
-//			region : 'center',
-//			border : false,
-//			autoScroll : true,
-//			html : '<iframe id="mainRight" name="mainRight" frameborder="no" width="100%" height="100%"  />'
-//		}]
-//	});
-
-//	tree.getRootNode().expand();
-
+Ext.onReady(function(){
+	Ext.define('Tenant', {
+	    extend: 'Ext.data.Model',
+	    fields: [
+		{
+			name : 'id',
+			type : 'long'
+		},{
+	        name: 'cid',
+	        type : 'long'
+	    }, {
+	    	name: 'dbi_id',
+	        type : 'long'
+	    }, {
+	    	name: 'name',
+	    	type : 'String'
+	    }, {
+	    	name: 'description',
+	    	type : 'String'
+	    }, {
+	    	name: 'monitor_status',
+	    	type : 'String'
+	    }, {
+	    	name: 'Version',
+	    	type : 'String'
+	    }, {
+	    	name: 'lc_status',
+	    	type : 'String'
+	    }, {
+	    	name: 'usage',
+	    	type : 'String'
+	    }, {
+	    	name: 'connection_user_password',
+	    	type : 'String'
+	    }, {
+	    	name: 'created_by',
+	    	type : 'String'
+	    }, {
+	    	name: 'created_on',
+	        type : 'String'
+	    },{
+	    	name : 'last_changed_by', 
+	    	type : 'String'
+	     },{
+	    	name : 'last_changed_on', 
+	    	type : 'String'
+	    }]
+	});
+    
+    store = new Ext.data.Store({
+    	model: 'Tenant',
+        proxy: new Ext.data.HttpProxy({url:'http://127.0.0.1:8080/mcSLD/tenant/getTenant!getAllTenant'}),//调用的动作
+        reader:new Ext.data.JsonReader(
+        {
+         type : 'json',
+         root : 'root'   //action里面的list，
+        },
+        [{
+			name : 'id',
+			mapping:'id',
+			type : 'long'
+		},{
+	        name: 'cid',
+	        mapping:'cid',
+	        type : 'long'
+	    }, {
+	    	name: 'dbi_id',
+	    	mapping:'dbi_id',
+	        type : 'long'
+	    }, {
+	    	name: 'name',
+	    	mapping:'description',
+	    	type : 'String'
+	    }, {
+	    	name: 'description',
+	    	mapping:'idescriptiond',
+	    	type : 'String'
+	    }, {
+	    	name: 'monitor_status',
+	    	mapping:'monitor_status',
+	    	type : 'String'
+	    }, {
+	    	name: 'Version',
+	    	mapping:'Version',
+	    	type : 'String'
+	    }, {
+	    	name: 'lc_status',
+	    	mapping:'lc_status',
+	    	type : 'String'
+	    }, {
+	    	name: 'usage',
+	    	mapping:'usage',
+	    	type : 'String'
+	    }, {
+	    	name: 'connection_user_password',
+	    	mapping:'connection_user_password',
+	    	type : 'String'
+	    }, {
+	    	name: 'created_by',
+	    	mapping:'created_by',
+	    	type : 'String'
+	    }, {
+	    	name: 'created_on',
+	    	mapping:'created_on',
+	        type : 'String'
+	    },{
+	    	name : 'last_changed_by', 
+	    	mapping:'last_changed_by',
+	    	type : 'String'
+	     },{
+	    	name : 'last_changed_on', 
+	    	mapping:'last_changed_on',
+	    	type : 'String'
+	    }]
+        ),
+        autoLoad: true
+	});
+    //store.on('load',function(){alert(store.getCount());});
+    store.load();
+    var tengrid = Ext.create('Ext.grid.Panel', {
+        store: store,
+        id: 'ten-panel',
+        columns: [{
+            header: 'Name',
+            dataIndex: 'name',
+			width: 90,
+        }, {
+            header: 'Service Unit',
+            dataIndex: 'Service Unit',
+            width: 80,
+        }, {
+           // xtype: 'datecolumn',
+            header: 'Version',
+            dataIndex: 'Version',
+            width: 80,
+        }, {
+           // xtype: 'numbercolumn',
+            header: 'Storage',
+            dataIndex: 'Storage',
+           // format: '$0,0',
+            width: 90,
+        }, {
+           // xtype: 'checkcolumn',
+            header: 'Storage',
+            dataIndex: 'Storage',
+            width: 90,
+        },{
+		    text     : 'Active User', 
+            width    : 85, 
+            sortable : true, 
+            dataIndex: 'Active User'
+        },
+		{
+            
+            text     : 'Remaining Days', 
+            width    : 85, 
+            sortable : true, 
+            dataIndex: 'Remaining Days'
+        },
+		{
+            text     : 'Monitor Status', 
+            width    : 85, 
+            sortable : true, 
+            dataIndex: 'Monitor Status'
+        }],
+        renderTo: 'editor-grid',
+        width: 600,
+        height: 400,
+        title: 'Tenants',
+        frame: true
+        
+    });
+    
+    return {
+        grid :  tengrid
+    };
 });

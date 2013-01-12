@@ -1,5 +1,4 @@
 package com.mc.pojo;
-// default package
 
 /**
  * BTenant entity. @author MyEclipse Persistence Tools
@@ -9,15 +8,9 @@ public class BTenant implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -7296069903031648955L;
 	private Integer id;
-	private BCustomer BCustomerByCid;
-	private BDbInstance BDbInstanceById;
-	private BCustomer BCustomerById;
-	private BDbInstance BDbInstanceByDbiId;
+	private BCustomer BCustomer;
+	private BDbInstance BDbInstance;
 	private String name;
 	private String description;
 	private String monitorStatus;
@@ -37,25 +30,19 @@ public class BTenant implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public BTenant(BCustomer BCustomerByCid, BDbInstance BDbInstanceById,
-			BCustomer BCustomerById, BDbInstance BDbInstanceByDbiId) {
-		this.BCustomerByCid = BCustomerByCid;
-		this.BDbInstanceById = BDbInstanceById;
-		this.BCustomerById = BCustomerById;
-		this.BDbInstanceByDbiId = BDbInstanceByDbiId;
+	public BTenant(BCustomer BCustomer, BDbInstance BDbInstance) {
+		this.BCustomer = BCustomer;
+		this.BDbInstance = BDbInstance;
 	}
 
 	/** full constructor */
-	public BTenant(BCustomer BCustomerByCid, BDbInstance BDbInstanceById,
-			BCustomer BCustomerById, BDbInstance BDbInstanceByDbiId,
-			String name, String description, String monitorStatus,
-			String version, String lcStatus, String usage,
-			String connectionUserPassword, String createdBy, String createdOn,
-			String lastChangedBy, String lastChangedOn) {
-		this.BCustomerByCid = BCustomerByCid;
-		this.BDbInstanceById = BDbInstanceById;
-		this.BCustomerById = BCustomerById;
-		this.BDbInstanceByDbiId = BDbInstanceByDbiId;
+	public BTenant(BCustomer BCustomer, BDbInstance BDbInstance, String name,
+			String description, String monitorStatus, String version,
+			String lcStatus, String usage, String connectionUserPassword,
+			String createdBy, String createdOn, String lastChangedBy,
+			String lastChangedOn) {
+		this.BCustomer = BCustomer;
+		this.BDbInstance = BDbInstance;
 		this.name = name;
 		this.description = description;
 		this.monitorStatus = monitorStatus;
@@ -79,36 +66,20 @@ public class BTenant implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public BCustomer getBCustomerByCid() {
-		return this.BCustomerByCid;
+	public BCustomer getBCustomer() {
+		return this.BCustomer;
 	}
 
-	public void setBCustomerByCid(BCustomer BCustomerByCid) {
-		this.BCustomerByCid = BCustomerByCid;
+	public void setBCustomer(BCustomer BCustomer) {
+		this.BCustomer = BCustomer;
 	}
 
-	public BDbInstance getBDbInstanceById() {
-		return this.BDbInstanceById;
+	public BDbInstance getBDbInstance() {
+		return this.BDbInstance;
 	}
 
-	public void setBDbInstanceById(BDbInstance BDbInstanceById) {
-		this.BDbInstanceById = BDbInstanceById;
-	}
-
-	public BCustomer getBCustomerById() {
-		return this.BCustomerById;
-	}
-
-	public void setBCustomerById(BCustomer BCustomerById) {
-		this.BCustomerById = BCustomerById;
-	}
-
-	public BDbInstance getBDbInstanceByDbiId() {
-		return this.BDbInstanceByDbiId;
-	}
-
-	public void setBDbInstanceByDbiId(BDbInstance BDbInstanceByDbiId) {
-		this.BDbInstanceByDbiId = BDbInstanceByDbiId;
+	public void setBDbInstance(BDbInstance BDbInstance) {
+		this.BDbInstance = BDbInstance;
 	}
 
 	public String getName() {

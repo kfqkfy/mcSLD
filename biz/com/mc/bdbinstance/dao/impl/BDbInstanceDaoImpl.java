@@ -11,7 +11,7 @@ import com.mc.pojo.BDbInstance;
  * @author kongfeiquan
  *
  */
-public class BDbInstanceDaoImpl extends GenericHibernateDao<BDbInstance> implements
+public class BDbInstanceDaoImpl extends GenericHibernateDao<BDbInstance,Long> implements
 		IBDbInstanceDao {
 
 	@Override

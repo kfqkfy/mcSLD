@@ -13,7 +13,7 @@ import com.mc.pojo.BTenant;
  * @author kongfeiquan
  *
  */
-public class BTenantDaoImpl extends GenericHibernateDao<BTenant> implements
+public class BTenantDaoImpl extends GenericHibernateDao<BTenant,Long> implements
 		IBTenantDao {
 
 	@Override
@@ -38,6 +38,13 @@ public class BTenantDaoImpl extends GenericHibernateDao<BTenant> implements
 	public BTenant getBTenant(BTenant tenant) {
 		// TODO Auto-generated method stub
 		return super.queryById(tenant.getId());
+	}
+	
+	@Override
+	public List<BTenant> queryAll() {
+		// TODO Auto-generated method stub
+		String hql = "from " + BTenant.class.getSimpleName();  
+        return queryForList(hql, null); 
 	}
 
 }

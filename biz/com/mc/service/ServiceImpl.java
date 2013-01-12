@@ -3,6 +3,8 @@
  */
 package com.mc.service;
 
+import java.util.List;
+
 import com.mc.bappcluster.dao.IBAppClusterDao;
 import com.mc.bappinstance.dao.IBAppInstanceDao;
 import com.mc.bcustomer.dao.IBCustomerDao;
@@ -13,6 +15,7 @@ import com.mc.btenant.dao.IBTenantDao;
 import com.mc.dao.IDao;
 import com.mc.pojo.BAppCluster;
 import com.mc.pojo.BServiceUtil;
+import com.mc.pojo.BTenant;
 
 /**
  * @author kongfeiquan
@@ -141,6 +144,11 @@ public class ServiceImpl implements IService {
 
 	public void setItd(IBTenantDao itd) {
 		this.itd = itd;
+	}
+
+	@Override
+	public List<BTenant> getAllTenant() {
+		return itd.queryAll();
 	}
 
 }

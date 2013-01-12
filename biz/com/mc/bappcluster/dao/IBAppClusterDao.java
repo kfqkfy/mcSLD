@@ -10,7 +10,7 @@ import com.mc.pojo.BAppCluster;
  * @author kongfeiquan
  *
  */
-public interface IBAppClusterDao extends GenericDao<BAppCluster> {
+public interface IBAppClusterDao extends GenericDao<BAppCluster,Long> {
 
 	public void updateAppCluster(BAppCluster appCluster);
 

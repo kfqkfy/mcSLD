@@ -12,7 +12,7 @@ import com.mc.pojo.BServiceUtil;
  * @author kongfeiquan
  *
  */
-public class DaoImpl extends GenericHibernateDao<Object> implements IDao {
+public class DaoImpl extends GenericHibernateDao<Object,Long> implements IDao {
 
 	
 	/**

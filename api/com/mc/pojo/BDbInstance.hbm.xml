@@ -8,15 +8,10 @@
     <class name="com.mc.pojo.BDbInstance" table="b_db_instance" schema="public">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
-            <generator class="sequence">
-            	<param name="sequence">b_db_instance_id_seq</param>
-            </generator>
+            <generator class="sequence" />
         </id>
-        <many-to-one name="BDbClusterById" class="com.mc.pojo.BDbCluster" update="false" insert="false" fetch="select">
-            <column name="id" not-null="true" unique="true" />
-        </many-to-one>
-        <many-to-one name="BDbClusterByDbcId" class="com.mc.pojo.BDbCluster" fetch="select">
-            <column name="dbc_id" not-null="true" />
+        <many-to-one name="BDbCluster" class="com.mc.pojo.BDbCluster" fetch="select">
+            <column name="dbc_id" />
         </many-to-one>
         <property name="name" type="java.lang.String">
             <column name="name" length="50" />
@@ -54,15 +49,9 @@
         <property name="lastChangedOn" type="java.lang.String">
             <column name="last_changed_on" length="50" />
         </property>
-        <set name="BTenantsForDbiId" inverse="true">
+        <set name="BTenants" inverse="true">
             <key>
                 <column name="dbi_id" not-null="true" />
-            </key>
-            <one-to-many class="com.mc.pojo.BTenant" />
-        </set>
-        <set name="BTenantsForId" inverse="true">
-            <key>
-                <column name="id" not-null="true" unique="true" />
             </key>
             <one-to-many class="com.mc.pojo.BTenant" />
         </set>

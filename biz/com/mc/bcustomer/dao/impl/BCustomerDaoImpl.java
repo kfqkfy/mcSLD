@@ -11,7 +11,7 @@ import com.mc.pojo.BCustomer;
  * @author kongfeiquan
  *
  */
-public class BCustomerDaoImpl extends GenericHibernateDao<BCustomer> implements
+public class BCustomerDaoImpl extends GenericHibernateDao<BCustomer,Long> implements
 		IBCustomerDao {
 
 	@Override

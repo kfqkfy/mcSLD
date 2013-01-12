@@ -11,7 +11,7 @@ import com.mc.pojo.BDbCluster;
  * @author kongfeiquan
  *
  */
-public class BDbClusterDaoImpl extends GenericHibernateDao<BDbCluster> implements
+public class BDbClusterDaoImpl extends GenericHibernateDao<BDbCluster,Long> implements
 		IBDbClusterDao {
 
 	@Override

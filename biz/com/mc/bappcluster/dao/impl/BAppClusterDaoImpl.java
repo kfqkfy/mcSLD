@@ -11,7 +11,7 @@ import com.mc.pojo.BAppCluster;
  * @author kongfeiquan
  *
  */
-public class BAppClusterDaoImpl extends GenericHibernateDao<BAppCluster> implements IBAppClusterDao {
+public class BAppClusterDaoImpl extends GenericHibernateDao<BAppCluster,Long> implements IBAppClusterDao {
 
 	
 	/**

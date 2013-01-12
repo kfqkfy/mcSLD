@@ -1,5 +1,4 @@
 package com.mc.pojo;
-// default package
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,10 +11,6 @@ public class BServiceUtil implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6664894062624836450L;
 	private Integer id;
 	private String name;
 	private String description;
@@ -28,8 +23,8 @@ public class BServiceUtil implements java.io.Serializable {
 	private String lastChangedBy;
 	private String lastChangedOn;
 	private Set BAppClusters = new HashSet(0);
-	private Set BDbClustersForSuId = new HashSet(0);
 	private Set BDbClustersForId = new HashSet(0);
+	private Set BDbClustersForSuId = new HashSet(0);
 
 	// Constructors
 
@@ -41,7 +36,7 @@ public class BServiceUtil implements java.io.Serializable {
 	public BServiceUtil(String name, String description, String monitorStatus,
 			String version, String ip, String port, String createdBy,
 			String createdOn, String lastChangedBy, String lastChangedOn,
-			Set BAppClusters, Set BDbClustersForSuId, Set BDbClustersForId) {
+			Set BAppClusters, Set BDbClustersForId, Set BDbClustersForSuId) {
 		this.name = name;
 		this.description = description;
 		this.monitorStatus = monitorStatus;
@@ -53,8 +48,8 @@ public class BServiceUtil implements java.io.Serializable {
 		this.lastChangedBy = lastChangedBy;
 		this.lastChangedOn = lastChangedOn;
 		this.BAppClusters = BAppClusters;
-		this.BDbClustersForSuId = BDbClustersForSuId;
 		this.BDbClustersForId = BDbClustersForId;
+		this.BDbClustersForSuId = BDbClustersForSuId;
 	}
 
 	// Property accessors
@@ -155,20 +150,20 @@ public class BServiceUtil implements java.io.Serializable {
 		this.BAppClusters = BAppClusters;
 	}
 
-	public Set getBDbClustersForSuId() {
-		return this.BDbClustersForSuId;
-	}
-
-	public void setBDbClustersForSuId(Set BDbClustersForSuId) {
-		this.BDbClustersForSuId = BDbClustersForSuId;
-	}
-
 	public Set getBDbClustersForId() {
 		return this.BDbClustersForId;
 	}
 
 	public void setBDbClustersForId(Set BDbClustersForId) {
 		this.BDbClustersForId = BDbClustersForId;
+	}
+
+	public Set getBDbClustersForSuId() {
+		return this.BDbClustersForSuId;
+	}
+
+	public void setBDbClustersForSuId(Set BDbClustersForSuId) {
+		this.BDbClustersForSuId = BDbClustersForSuId;
 	}
 
 }

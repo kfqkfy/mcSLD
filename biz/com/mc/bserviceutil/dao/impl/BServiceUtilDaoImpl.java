@@ -11,7 +11,7 @@ import com.mc.bserviceutil.dao.IBServiceUtilDao;
  * @author kongfeiquan
  *
  */
-public class BServiceUtilDaoImpl extends GenericHibernateDao<BServiceUtil> implements IBServiceUtilDao {
+public class BServiceUtilDaoImpl extends GenericHibernateDao<BServiceUtil,Long> implements IBServiceUtilDao {
 
 	
 	/**

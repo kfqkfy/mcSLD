@@ -1,5 +1,4 @@
 package com.mc.pojo;
-// default package
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,13 +11,8 @@ public class BDbInstance implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6333539838508663121L;
 	private Integer id;
-	private BDbCluster BDbClusterById;
-	private BDbCluster BDbClusterByDbcId;
+	private BDbCluster BDbCluster;
 	private String name;
 	private String description;
 	private String monitorStatus;
@@ -31,8 +25,7 @@ public class BDbInstance implements java.io.Serializable {
 	private String createdOn;
 	private String lastChangedBy;
 	private String lastChangedOn;
-	private Set BTenantsForDbiId = new HashSet(0);
-	private Set BTenantsForId = new HashSet(0);
+	private Set BTenants = new HashSet(0);
 
 	// Constructors
 
@@ -40,21 +33,13 @@ public class BDbInstance implements java.io.Serializable {
 	public BDbInstance() {
 	}
 
-	/** minimal constructor */
-	public BDbInstance(BDbCluster BDbClusterById, BDbCluster BDbClusterByDbcId) {
-		this.BDbClusterById = BDbClusterById;
-		this.BDbClusterByDbcId = BDbClusterByDbcId;
-	}
-
 	/** full constructor */
-	public BDbInstance(BDbCluster BDbClusterById, BDbCluster BDbClusterByDbcId,
-			String name, String description, String monitorStatus, String ip,
-			String dbType, String dbVersion, String connectionUserName,
-			String connectionUserPassword, String createdBy, String createdOn,
-			String lastChangedBy, String lastChangedOn, Set BTenantsForDbiId,
-			Set BTenantsForId) {
-		this.BDbClusterById = BDbClusterById;
-		this.BDbClusterByDbcId = BDbClusterByDbcId;
+	public BDbInstance(BDbCluster BDbCluster, String name, String description,
+			String monitorStatus, String ip, String dbType, String dbVersion,
+			String connectionUserName, String connectionUserPassword,
+			String createdBy, String createdOn, String lastChangedBy,
+			String lastChangedOn, Set BTenants) {
+		this.BDbCluster = BDbCluster;
 		this.name = name;
 		this.description = description;
 		this.monitorStatus = monitorStatus;
@@ -67,8 +52,7 @@ public class BDbInstance implements java.io.Serializable {
 		this.createdOn = createdOn;
 		this.lastChangedBy = lastChangedBy;
 		this.lastChangedOn = lastChangedOn;
-		this.BTenantsForDbiId = BTenantsForDbiId;
-		this.BTenantsForId = BTenantsForId;
+		this.BTenants = BTenants;
 	}
 
 	// Property accessors
@@ -81,20 +65,12 @@ public class BDbInstance implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public BDbCluster getBDbClusterById() {
-		return this.BDbClusterById;
+	public BDbCluster getBDbCluster() {
+		return this.BDbCluster;
 	}
 
-	public void setBDbClusterById(BDbCluster BDbClusterById) {
-		this.BDbClusterById = BDbClusterById;
-	}
-
-	public BDbCluster getBDbClusterByDbcId() {
-		return this.BDbClusterByDbcId;
-	}
-
-	public void setBDbClusterByDbcId(BDbCluster BDbClusterByDbcId) {
-		this.BDbClusterByDbcId = BDbClusterByDbcId;
+	public void setBDbCluster(BDbCluster BDbCluster) {
+		this.BDbCluster = BDbCluster;
 	}
 
 	public String getName() {
@@ -193,20 +169,12 @@ public class BDbInstance implements java.io.Serializable {
 		this.lastChangedOn = lastChangedOn;
 	}
 
-	public Set getBTenantsForDbiId() {
-		return this.BTenantsForDbiId;
+	public Set getBTenants() {
+		return this.BTenants;
 	}
 
-	public void setBTenantsForDbiId(Set BTenantsForDbiId) {
-		this.BTenantsForDbiId = BTenantsForDbiId;
-	}
-
-	public Set getBTenantsForId() {
-		return this.BTenantsForId;
-	}
-
-	public void setBTenantsForId(Set BTenantsForId) {
-		this.BTenantsForId = BTenantsForId;
+	public void setBTenants(Set BTenants) {
+		this.BTenants = BTenants;
 	}
 
 }
