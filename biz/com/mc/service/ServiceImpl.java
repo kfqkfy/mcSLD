@@ -51,7 +51,7 @@ public class ServiceImpl implements IService {
 	@Override
 	public int insertAppCluster(BAppCluster appCluster) {
 		// TODO Auto-generated method stub
-		appCluster.setSu(isu.queryById(1));
+		appCluster.setBServiceUtil(isu.queryById(1));
 		return iacd.insertAppCluster(appCluster);
 	}
 

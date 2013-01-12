@@ -1,25 +1,71 @@
 package com.mc.pojo;
+// default package
 
-import com.mc.pojo.base.BaseBCustomer;
+import java.util.HashSet;
+import java.util.Set;
 
+/**
+ * BCustomer entity. @author MyEclipse Persistence Tools
+ */
 
-
-public class BCustomer extends BaseBCustomer {
-	private static final long serialVersionUID = 1L;
-
-/*[CONSTRUCTOR MARKER BEGIN]*/
-	public BCustomer () {
-		super();
-	}
+public class BCustomer implements java.io.Serializable {
 
 	/**
-	 * Constructor for primary key
+	 * 
 	 */
-	public BCustomer (java.lang.Integer id) {
-		super(id);
+	private static final long serialVersionUID = 2680610994454147919L;
+	// Fields
+
+	private Integer id;
+	private String name;
+	private Set BTenantsForCid = new HashSet(0);
+	private Set BTenantsForId = new HashSet(0);
+
+	// Constructors
+
+	/** default constructor */
+	public BCustomer() {
 	}
 
-/*[CONSTRUCTOR MARKER END]*/
+	/** full constructor */
+	public BCustomer(String name, Set BTenantsForCid, Set BTenantsForId) {
+		this.name = name;
+		this.BTenantsForCid = BTenantsForCid;
+		this.BTenantsForId = BTenantsForId;
+	}
 
+	// Property accessors
+
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Set getBTenantsForCid() {
+		return this.BTenantsForCid;
+	}
+
+	public void setBTenantsForCid(Set BTenantsForCid) {
+		this.BTenantsForCid = BTenantsForCid;
+	}
+
+	public Set getBTenantsForId() {
+		return this.BTenantsForId;
+	}
+
+	public void setBTenantsForId(Set BTenantsForId) {
+		this.BTenantsForId = BTenantsForId;
+	}
 
 }

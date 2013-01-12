@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 	<head>
 		<title>SLD</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -10,6 +10,39 @@
 		<script type="text/javascript" src="statics/js/headMenu/custom.js"></script>
 		<script type="text/javascript" src="statics/js/headMenu/headMenu.js"></script>
 	</head>
-	<body text='#000000' >
+	<body >
+	<div style="display:none;">
+
+        <!-- Start page content -->
+        <div id="start-div">
+            <div style="float:left;" ><img src="statics/images/layout-icon.gif" /></div>
+            <div style="margin-left:100px;">
+                <h2>Welcome!</h2>
+                <p>There are many sample layouts to choose from that should give you a good head start in building your own
+                application layout.  Just like the combination examples, you can mix and match most layouts as
+                needed, so don't be afraid to experiment!</p>
+                <p>Select a layout from the tree to the left to begin.</p>
+            </div>
+        </div>
+        
+         <div id="center-details">
+            <h2>Ext.ux.layout.Center</h2>
+            <p>This is a custom layout for centering contents within a container.  The only requirement is
+            that the container have a single child panel with a fixed width or a percentage ratio specified.
+            The child panel can then contain  any content, including other components, that will display
+            centered within the main container. To make the centered panel non-visual, remove the title
+            and add <tt>border:false</tt> to the child config.</p>
+            <p><b>Sample Config:</b></p>
+            <pre><code>
+layout:'ux.center',
+items: {
+    title: 'Centered Panel',
+    widthRatio: 0.75,
+    html: 'Some content'
+}
+            </code></pre>
+        </div>
+       
+    </div>
 	</body>
 </html>

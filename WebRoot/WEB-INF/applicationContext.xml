@@ -46,7 +46,6 @@
        </property>
        <property name="mappingResources">
            <list>
-              <value>com/mc/test/bo/TestBo.hbm.xml</value>
               <value>com/mc/pojo/BAppCluster.hbm.xml</value>
               <value>com/mc/pojo/BAppInstance.hbm.xml</value>
               <value>com/mc/pojo/BCustomer.hbm.xml</value>
@@ -54,7 +53,7 @@
               <value>com/mc/pojo/BDbInstance.hbm.xml</value>
               <value>com/mc/pojo/BServiceUtil.hbm.xml</value>
               <value>com/mc/pojo/BTenant.hbm.xml</value>
-           </list>
+     		</list>
        </property>
 
        <property name="hibernateProperties">
@@ -84,10 +83,6 @@
     	<property name="sessionFactory"><ref bean="sessionFactory" /></property>
     </bean>
     
-	<bean id="testdao" class="com.mc.test.dao.impl.TestDaoImpl">
-		<property name="sessionFactory"><ref bean="sessionFactory" /></property>
-	</bean>
-	
 	<bean id="dao" class="com.mc.dao.Impl.DaoImpl">
 		<property name="sessionFactory"><ref bean="sessionFactory" /></property>
 	</bean>
@@ -120,10 +115,6 @@
 		<property name="sessionFactory"><ref bean="sessionFactory" /></property>
 	</bean>
 	
-	<bean id="testService" class="com.mc.test.service.TestServiceImpl">
-		<property name="testdao"><ref bean="testdao" /></property>
-	</bean>
-	
 	<bean id="service" class="com.mc.service.ServiceImpl">
 		<property name="dao"><ref bean="dao" /></property>
 		<property name="iacd"><ref bean="iacd" /></property>
@@ -133,11 +124,6 @@
 		<property name="idcd"><ref bean="idcd" /></property>
 		<property name="idid"><ref bean="idid" /></property>
 		<property name="itd"><ref bean="itd" /></property>
-	</bean>
-	
-	<bean name="testaction" class="com.mc.test.Test">
-		<property name="testService"><ref bean="testService" /></property>
-		<property name="service"><ref bean="service" /></property>
 	</bean>
 	
 	    <tx:advice id="txAdvice" transaction-manager="transactionManager">  
