@@ -10,7 +10,7 @@ import com.mc.pojo.BDbInstance;
  * @author kongfeiquan
  *
  */
-public interface IBDbInstanceDao extends GenericDao<BDbInstance> {
+public interface IBDbInstanceDao extends GenericDao<BDbInstance,Long> {
 
 	public int insertBDbInstance(BDbInstance dbInstance);
 	

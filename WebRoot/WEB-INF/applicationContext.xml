@@ -74,6 +74,10 @@
     
     <bean id="baseAction" class="com.mc.util.BaseAction"></bean>
     
+    <bean id="tenantAction" class="com.mc.tenant.TenantAction">
+    	<property name="service"><ref bean="service" /></property>
+    </bean>
+    
     <bean id="transactionManager"
        class="org.springframework.orm.hibernate4.HibernateTransactionManager" >
        <property name="sessionFactory"><ref bean="sessionFactory" /></property>

@@ -8,20 +8,12 @@
     <class name="com.mc.pojo.BTenant" table="b_tenant" schema="public">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
-            <generator class="sequence">
-            	<param name="sequence">b_tenant_id_seq</param>
-            </generator>
+            <generator class="sequence" />
         </id>
-        <many-to-one name="BCustomerByCid" class="com.mc.pojo.BCustomer" fetch="select">
+        <many-to-one name="BCustomer" class="com.mc.pojo.BCustomer" fetch="select">
             <column name="cid" not-null="true" />
         </many-to-one>
-        <many-to-one name="BDbInstanceById" class="com.mc.pojo.BDbInstance" update="false" insert="false" fetch="select">
-            <column name="id" not-null="true" unique="true" />
-        </many-to-one>
-        <many-to-one name="BCustomerById" class="com.mc.pojo.BCustomer" update="false" insert="false" fetch="select">
-            <column name="id" not-null="true" unique="true" />
-        </many-to-one>
-        <many-to-one name="BDbInstanceByDbiId" class="com.mc.pojo.BDbInstance" fetch="select">
+        <many-to-one name="BDbInstance" class="com.mc.pojo.BDbInstance" fetch="select">
             <column name="dbi_id" not-null="true" />
         </many-to-one>
         <property name="name" type="java.lang.String">

@@ -11,16 +11,8 @@ import com.mc.bserviceutil.dao.IBServiceUtilDao;
  * @author kongfeiquan
  *
  */
-public class BServiceUtilDaoImpl extends GenericHibernateDao<BServiceUtil> implements IBServiceUtilDao {
+public class BServiceUtilDaoImpl extends GenericHibernateDao<BServiceUtil,Long> implements IBServiceUtilDao {
 
-	
-	/**
-	 * 
-	 */
-	public BServiceUtilDaoImpl() {
-		// TODO Auto-generated constructor stub
-		super(BServiceUtil.class);
-	}
 
 	/* (non-Javadoc)
 	 * @see com.mc.dao.IDao#updateAppCluster(com.mc.pojo.BAppCluster)

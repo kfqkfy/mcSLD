@@ -1,5 +1,4 @@
 package com.mc.pojo;
-// default package
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,10 +11,6 @@ public class BDbCluster implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -948872277089812907L;
 	private Integer id;
 	private BServiceUtil BServiceUtilById;
 	private BServiceUtil BServiceUtilBySuId;
@@ -32,8 +27,7 @@ public class BDbCluster implements java.io.Serializable {
 	private String createdOn;
 	private String lastChangedBy;
 	private String lastChangedOn;
-	private Set BDbInstancesForDbcId = new HashSet(0);
-	private Set BDbInstancesForId = new HashSet(0);
+	private Set BDbInstances = new HashSet(0);
 
 	// Constructors
 
@@ -54,8 +48,7 @@ public class BDbCluster implements java.io.Serializable {
 			String monitorStatus, String ip, String port, String dbType,
 			String dbVersion, String connectionUserName,
 			String connectionUserPassword, String createdBy, String createdOn,
-			String lastChangedBy, String lastChangedOn,
-			Set BDbInstancesForDbcId, Set BDbInstancesForId) {
+			String lastChangedBy, String lastChangedOn, Set BDbInstances) {
 		this.BServiceUtilById = BServiceUtilById;
 		this.BServiceUtilBySuId = BServiceUtilBySuId;
 		this.name = name;
@@ -71,8 +64,7 @@ public class BDbCluster implements java.io.Serializable {
 		this.createdOn = createdOn;
 		this.lastChangedBy = lastChangedBy;
 		this.lastChangedOn = lastChangedOn;
-		this.BDbInstancesForDbcId = BDbInstancesForDbcId;
-		this.BDbInstancesForId = BDbInstancesForId;
+		this.BDbInstances = BDbInstances;
 	}
 
 	// Property accessors
@@ -205,20 +197,12 @@ public class BDbCluster implements java.io.Serializable {
 		this.lastChangedOn = lastChangedOn;
 	}
 
-	public Set getBDbInstancesForDbcId() {
-		return this.BDbInstancesForDbcId;
+	public Set getBDbInstances() {
+		return this.BDbInstances;
 	}
 
-	public void setBDbInstancesForDbcId(Set BDbInstancesForDbcId) {
-		this.BDbInstancesForDbcId = BDbInstancesForDbcId;
-	}
-
-	public Set getBDbInstancesForId() {
-		return this.BDbInstancesForId;
-	}
-
-	public void setBDbInstancesForId(Set BDbInstancesForId) {
-		this.BDbInstancesForId = BDbInstancesForId;
+	public void setBDbInstances(Set BDbInstances) {
+		this.BDbInstances = BDbInstances;
 	}
 
 }

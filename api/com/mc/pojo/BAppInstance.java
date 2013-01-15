@@ -1,5 +1,4 @@
 package com.mc.pojo;
-// default package
 
 /**
  * BAppInstance entity. @author MyEclipse Persistence Tools
@@ -9,10 +8,6 @@ public class BAppInstance implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3087796217093225258L;
 	private Integer id;
 	private BAppCluster BAppClusterById;
 	private BAppCluster BAppClusterByScId;

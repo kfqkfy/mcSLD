@@ -13,4 +13,11 @@
 			<result name="AppCluster">/index.jsp</result>
 		</action>
 	</package>
+	
+	<package name="tenant" extends="json-default" namespace="/tenant">
+		<action name="getTenant" method="getAllTenant" class="com.mc.tenant.TenantAction">
+    		<result name="success" type="json" /> 
+    		
+		</action>
+	</package>
 </struts> 

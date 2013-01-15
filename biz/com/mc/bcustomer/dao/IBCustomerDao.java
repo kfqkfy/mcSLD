@@ -10,7 +10,7 @@ import com.mc.pojo.BCustomer;
  * @author kongfeiquan
  *
  */
-public interface IBCustomerDao extends GenericDao<BCustomer> {
+public interface IBCustomerDao extends GenericDao<BCustomer,Long> {
 
 	public int insertBCustomer(BCustomer customer);
 	

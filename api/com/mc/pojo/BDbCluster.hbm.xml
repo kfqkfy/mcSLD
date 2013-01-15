@@ -8,9 +8,7 @@
     <class name="com.mc.pojo.BDbCluster" table="b_db_cluster" schema="public">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
-            <generator class="sequence">
-            	<param name="sequence">b_db_cluster_id_seq</param>
-            </generator>
+            <generator class="sequence" />
         </id>
         <many-to-one name="BServiceUtilById" class="com.mc.pojo.BServiceUtil" update="false" insert="false" fetch="select">
             <column name="id" not-null="true" unique="true" />
@@ -57,15 +55,9 @@
         <property name="lastChangedOn" type="java.lang.String">
             <column name="last_changed_on" length="50" />
         </property>
-        <set name="BDbInstancesForDbcId" inverse="true">
+        <set name="BDbInstances" inverse="true">
             <key>
-                <column name="dbc_id" not-null="true" />
-            </key>
-            <one-to-many class="com.mc.pojo.BDbInstance" />
-        </set>
-        <set name="BDbInstancesForId" inverse="true">
-            <key>
-                <column name="id" not-null="true" unique="true" />
+                <column name="dbc_id" />
             </key>
             <one-to-many class="com.mc.pojo.BDbInstance" />
         </set>

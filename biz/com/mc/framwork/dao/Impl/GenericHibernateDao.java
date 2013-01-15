@@ -3,6 +3,9 @@
  */
 package com.mc.framwork.dao.Impl;
 
+import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -16,20 +19,30 @@ import com.mc.framwork.dao.GenericDao;
  * @author kongfeiquan
  *
  */
-public class GenericHibernateDao<T> implements GenericDao<T> {  
+public class GenericHibernateDao<T, ID extends Serializable> implements GenericDao<T, ID> {  
     
-    private Class<T> entityClass;  
+	private Class<T> type;  
     
     public GenericHibernateDao() {
-		
-	}
+    	this.type = null;
+        Class c = getClass();
+        Type t = c.getGenericSuperclass();
+        if (t instanceof ParameterizedType) {
+            Type[] p = ((ParameterizedType) t).getActualTypeArguments();
+            this.type = (Class<T>) p[0];
+        }
+    }
   
-    public GenericHibernateDao(Class<T> clazz) {  
-        this.entityClass = clazz;  
-    }  
+//    public GenericHibernateDao(Class<T> clazz) {  
+//        this.type = clazz;  
+//    }  
   
     private SessionFactory sessionFactory;  
   
+//    public ID save(T entity) {  
+//        return (ID) hibernateTemplate.save(entity);  
+//    }  
+    
     @Override  
     public int insert(T t) {  
         Session session = sessionFactory.getCurrentSession();
@@ -58,12 +71,12 @@ public class GenericHibernateDao<T> implements GenericDao<T> {
     @SuppressWarnings("unchecked")  
     @Override  
     public T queryById(Integer id) {  
-        return (T) sessionFactory.openSession().get(entityClass, id);  
+        return (T) sessionFactory.openSession().get(type, id);  
     }  
     
     @Override  
     public List<T> queryAll() {  
-        String hql = "from " + entityClass.getSimpleName();  
+        String hql = "from " + type.getSimpleName();  
         return queryForList(hql, null);  
     }  
   

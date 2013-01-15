@@ -4,7 +4,7 @@ import com.mc.bappinstance.dao.IBAppInstanceDao;
 import com.mc.framwork.dao.Impl.GenericHibernateDao;
 import com.mc.pojo.BAppInstance;
 
-public class BAppInstanceDaoImpl extends GenericHibernateDao<BAppInstance> implements
+public class BAppInstanceDaoImpl extends GenericHibernateDao<BAppInstance,Long> implements
 		IBAppInstanceDao {
 
 	@Override

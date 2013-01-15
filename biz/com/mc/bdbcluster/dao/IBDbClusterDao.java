@@ -10,7 +10,7 @@ import com.mc.pojo.BDbCluster;
  * @author kongfeiquan
  *
  */
-public interface IBDbClusterDao extends GenericDao<BDbCluster> {
+public interface IBDbClusterDao extends GenericDao<BDbCluster,Long> {
 
 	public int insertBDbCluster(BDbCluster dbCluster);
 	

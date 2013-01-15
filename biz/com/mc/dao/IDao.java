@@ -11,7 +11,7 @@ import com.mc.pojo.BServiceUtil;
  * @author kongfeiquan
  *
  */
-public interface IDao extends GenericDao<Object> {
+public interface IDao extends GenericDao<Object,Long> {
 
 	public int updateAppCluster(BAppCluster appCluster);
 

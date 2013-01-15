@@ -1,5 +1,4 @@
 package com.mc.pojo;
-// default package
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,10 +11,6 @@ public class BAppCluster implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3480860782128234951L;
 	private Integer id;
 	private BServiceUtil BServiceUtil;
 	private String name;

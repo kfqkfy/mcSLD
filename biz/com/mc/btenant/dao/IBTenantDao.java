@@ -10,7 +10,9 @@ import com.mc.pojo.BTenant;
  * @author kongfeiquan
  *
  */
-public interface IBTenantDao extends GenericDao<BTenant> {
+public interface IBTenantDao extends GenericDao<BTenant ,Long > {
+	
+	
 
 	public int insertBTenant(BTenant tenant);
 	

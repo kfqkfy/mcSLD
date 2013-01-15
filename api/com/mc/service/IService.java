@@ -1,7 +1,10 @@
 package com.mc.service;
 
+import java.util.List;
+
 import com.mc.pojo.BAppCluster;
 import com.mc.pojo.BServiceUtil;
+import com.mc.pojo.BTenant;
 
 public interface IService {
 
@@ -14,5 +17,7 @@ public interface IService {
 	public BAppCluster getAppCluster(BAppCluster appCluster);
 
 	public BServiceUtil getServiceUtil(BServiceUtil serviceUtil);
+
+	public List<BTenant> getAllTenant();
 
 }

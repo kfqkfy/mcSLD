@@ -10,7 +10,7 @@ import com.mc.pojo.BAppInstance;
  * @author kongfeiquan
  *
  */
-public interface IBAppInstanceDao extends GenericDao<BAppInstance> {
+public interface IBAppInstanceDao extends GenericDao<BAppInstance,Long> {
 
 	public void updateAppInstance(BAppInstance appInstance);
 
