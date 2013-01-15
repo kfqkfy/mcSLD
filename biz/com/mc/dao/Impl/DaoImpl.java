@@ -15,13 +15,6 @@ import com.mc.pojo.BServiceUtil;
 public class DaoImpl extends GenericHibernateDao<Object,Long> implements IDao {
 
 	
-	/**
-	 * 
-	 */
-	public DaoImpl() {
-		// TODO Auto-generated constructor stub
-		super(Object.class);
-	}
 
 	/* (non-Javadoc)
 	 * @see com.mc.dao.IDao#updateAppCluster(com.mc.pojo.BAppCluster)

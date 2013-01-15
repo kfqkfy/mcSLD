@@ -31,6 +31,16 @@ public class TenantAction extends ActionSupport {
     } 
     
     
+    
+    
+	public BTenant getTenant() {
+		return tenant;
+	}
+
+	public void setTenant(BTenant tenant) {
+		this.tenant = tenant;
+	}
+
 	/**
 	 * 
 	 */
@@ -42,6 +52,7 @@ public class TenantAction extends ActionSupport {
 	public String getAllTenant(){
 		root = new ArrayList<BTenant>();
 		root = service.getAllTenant();
+		tenant = root.get(0);
 		return "success";
 	}
 	

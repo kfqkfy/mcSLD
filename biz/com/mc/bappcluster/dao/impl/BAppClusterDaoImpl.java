@@ -14,13 +14,6 @@ import com.mc.pojo.BAppCluster;
 public class BAppClusterDaoImpl extends GenericHibernateDao<BAppCluster,Long> implements IBAppClusterDao {
 
 	
-	/**
-	 * 
-	 */
-	public BAppClusterDaoImpl() {
-		// TODO Auto-generated constructor stub
-		super(BAppCluster.class);
-	}
 
 	/* (non-Javadoc)
 	 * @see com.mc.dao.IDao#updateAppCluster(com.mc.pojo.BAppCluster)

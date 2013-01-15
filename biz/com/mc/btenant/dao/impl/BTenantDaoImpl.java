@@ -39,12 +39,12 @@ public class BTenantDaoImpl extends GenericHibernateDao<BTenant,Long> implements
 		// TODO Auto-generated method stub
 		return super.queryById(tenant.getId());
 	}
-	
-	@Override
-	public List<BTenant> queryAll() {
-		// TODO Auto-generated method stub
-		String hql = "from " + BTenant.class.getSimpleName();  
-        return queryForList(hql, null); 
-	}
+//	
+//	@Override
+//	public List<BTenant> queryAll() {
+//		// TODO Auto-generated method stub
+//		String hql = "from " + BTenant.class.getSimpleName();  
+//        return queryForList(hql, null); 
+//	}
 
 }

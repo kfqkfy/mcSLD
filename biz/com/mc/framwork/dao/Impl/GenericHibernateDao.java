@@ -4,6 +4,8 @@
 package com.mc.framwork.dao.Impl;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -22,12 +24,18 @@ public class GenericHibernateDao<T, ID extends Serializable> implements GenericD
 	private Class<T> type;  
     
     public GenericHibernateDao() {
-
+    	this.type = null;
+        Class c = getClass();
+        Type t = c.getGenericSuperclass();
+        if (t instanceof ParameterizedType) {
+            Type[] p = ((ParameterizedType) t).getActualTypeArguments();
+            this.type = (Class<T>) p[0];
+        }
     }
   
-    public GenericHibernateDao(Class<T> clazz) {  
-        this.type = clazz;  
-    }  
+//    public GenericHibernateDao(Class<T> clazz) {  
+//        this.type = clazz;  
+//    }  
   
     private SessionFactory sessionFactory;  
   

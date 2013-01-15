@@ -1,4 +1,4 @@
-/*Ext.onReady(function() {
+Ext.onReady(function() {
 
 	Ext.QuickTips.init();
 
@@ -103,8 +103,8 @@
         renderTo: Ext.getBody()
     });
 	
-});*/
-/*
+});
+
 var store;
 function getTenant() { 
 	
@@ -115,7 +115,7 @@ function getTenant() {
 		{
 			name : 'id',
 			type : 'long'
-		},{
+		}/*,{
 	        name: 'cid',
 	        type : 'long'
 	    }, {
@@ -154,18 +154,27 @@ function getTenant() {
 	     },{
 	    	name : 'last_changed_on', 
 	    	type : 'String'
-	    }]
+	    }*/]
 	});
+	
+	
     
     store = new Ext.data.Store({
     	model: 'Tenant',
-        proxy: new Ext.data.HttpProxy({url:'http://127.0.0.1:8080/mcSLD/tenant/getTenant!getAllTenant'}),//调用的动作
-        reader:new Ext.data.JsonReader(
-        {
-         type : 'json',
-         root : 'root'   //action里面的list，
-        },
-        [{
+    	proxy: {
+            //异步获取数据，这里的URL可以改为任何动态页面，只要返回JSON数据即可
+             type: 'ajax',
+             url: 'http://127.0.0.1:8080/mcSLD/tenant/getTenant!getAllTenant',
+             
+             reader: {
+                 type: 'json',
+                 root: 'root',
+                 //totalProperty  : 'total'
+             }
+         }/*
+         
+         
+         {
 			name : 'id',
 			mapping:'id',
 			type : 'long'
@@ -221,17 +230,19 @@ function getTenant() {
 	    	name : 'last_changed_on', 
 	    	mapping:'last_changed_on',
 	    	type : 'String'
-	    }]
-        ),
+	    }
+    	)*/,
         autoLoad: true
 	});
-    //store.on('load',function(){alert(store.getCount());});
-    store.load();
-    alert(store.getCount());
+    store.on('load',function(){alert(store.getCount());});
+    
     var tengrid = Ext.create('Ext.grid.Panel', {
         store: store,
         id: 'ten-panel',
         columns: [{
+        	header: "id",
+        	dataIndex: "id"
+        }/*{
             header: 'Name',
             dataIndex: 'name',
 			width: 90,
@@ -264,7 +275,7 @@ function getTenant() {
 		{
             
             text     : 'Remaining Days', 
-            width    : 85, 
+            width    : w85, 
             sortable : true, 
             dataIndex: 'Remaining Days'
         },
@@ -273,7 +284,7 @@ function getTenant() {
             width    : 85, 
             sortable : true, 
             dataIndex: 'Monitor Status'
-        }],
+        }*/],
         renderTo: 'editor-grid',
         width: 600,
         height: 400,
@@ -315,186 +326,11 @@ function getTenant() {
         }
     });
     
+    //store.load();
+    //alert(store.getCount());
+    
     return {
     	
         grid :  tengrid
     };
-}*/
-
-Ext.onReady(function(){
-	Ext.define('Tenant', {
-	    extend: 'Ext.data.Model',
-	    fields: [
-		{
-			name : 'id',
-			type : 'long'
-		},{
-	        name: 'cid',
-	        type : 'long'
-	    }, {
-	    	name: 'dbi_id',
-	        type : 'long'
-	    }, {
-	    	name: 'name',
-	    	type : 'String'
-	    }, {
-	    	name: 'description',
-	    	type : 'String'
-	    }, {
-	    	name: 'monitor_status',
-	    	type : 'String'
-	    }, {
-	    	name: 'Version',
-	    	type : 'String'
-	    }, {
-	    	name: 'lc_status',
-	    	type : 'String'
-	    }, {
-	    	name: 'usage',
-	    	type : 'String'
-	    }, {
-	    	name: 'connection_user_password',
-	    	type : 'String'
-	    }, {
-	    	name: 'created_by',
-	    	type : 'String'
-	    }, {
-	    	name: 'created_on',
-	        type : 'String'
-	    },{
-	    	name : 'last_changed_by', 
-	    	type : 'String'
-	     },{
-	    	name : 'last_changed_on', 
-	    	type : 'String'
-	    }]
-	});
-    
-    store = new Ext.data.Store({
-    	model: 'Tenant',
-        proxy: new Ext.data.HttpProxy({url:'http://127.0.0.1:8080/mcSLD/tenant/getTenant!getAllTenant'}),//调用的动作
-        reader:new Ext.data.JsonReader(
-        {
-         type : 'json',
-         root : 'root'   //action里面的list，
-        },
-        [{
-			name : 'id',
-			mapping:'id',
-			type : 'long'
-		},{
-	        name: 'cid',
-	        mapping:'cid',
-	        type : 'long'
-	    }, {
-	    	name: 'dbi_id',
-	    	mapping:'dbi_id',
-	        type : 'long'
-	    }, {
-	    	name: 'name',
-	    	mapping:'description',
-	    	type : 'String'
-	    }, {
-	    	name: 'description',
-	    	mapping:'idescriptiond',
-	    	type : 'String'
-	    }, {
-	    	name: 'monitor_status',
-	    	mapping:'monitor_status',
-	    	type : 'String'
-	    }, {
-	    	name: 'Version',
-	    	mapping:'Version',
-	    	type : 'String'
-	    }, {
-	    	name: 'lc_status',
-	    	mapping:'lc_status',
-	    	type : 'String'
-	    }, {
-	    	name: 'usage',
-	    	mapping:'usage',
-	    	type : 'String'
-	    }, {
-	    	name: 'connection_user_password',
-	    	mapping:'connection_user_password',
-	    	type : 'String'
-	    }, {
-	    	name: 'created_by',
-	    	mapping:'created_by',
-	    	type : 'String'
-	    }, {
-	    	name: 'created_on',
-	    	mapping:'created_on',
-	        type : 'String'
-	    },{
-	    	name : 'last_changed_by', 
-	    	mapping:'last_changed_by',
-	    	type : 'String'
-	     },{
-	    	name : 'last_changed_on', 
-	    	mapping:'last_changed_on',
-	    	type : 'String'
-	    }]
-        ),
-        autoLoad: true
-	});
-    //store.on('load',function(){alert(store.getCount());});
-    store.load();
-    var tengrid = Ext.create('Ext.grid.Panel', {
-        store: store,
-        id: 'ten-panel',
-        columns: [{
-            header: 'Name',
-            dataIndex: 'name',
-			width: 90,
-        }, {
-            header: 'Service Unit',
-            dataIndex: 'Service Unit',
-            width: 80,
-        }, {
-           // xtype: 'datecolumn',
-            header: 'Version',
-            dataIndex: 'Version',
-            width: 80,
-        }, {
-           // xtype: 'numbercolumn',
-            header: 'Storage',
-            dataIndex: 'Storage',
-           // format: '$0,0',
-            width: 90,
-        }, {
-           // xtype: 'checkcolumn',
-            header: 'Storage',
-            dataIndex: 'Storage',
-            width: 90,
-        },{
-		    text     : 'Active User', 
-            width    : 85, 
-            sortable : true, 
-            dataIndex: 'Active User'
-        },
-		{
-            
-            text     : 'Remaining Days', 
-            width    : 85, 
-            sortable : true, 
-            dataIndex: 'Remaining Days'
-        },
-		{
-            text     : 'Monitor Status', 
-            width    : 85, 
-            sortable : true, 
-            dataIndex: 'Monitor Status'
-        }],
-        renderTo: 'editor-grid',
-        width: 600,
-        height: 400,
-        title: 'Tenants',
-        frame: true
-        
-    });
-    
-    return {
-        grid :  tengrid
-    };
-});
+}
